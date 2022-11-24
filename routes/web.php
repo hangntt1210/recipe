@@ -32,3 +32,4 @@ Route::post('dang-nhap','App\Http\Controllers\PageController@postLogin')->name('
 Route::get('dang-xuat','App\Http\Controllers\PageController@getLogout')->name('logout');
 
 Route::get('profile','App\Http\Controllers\PageController@getProfile')->name('profile');
+Route::get('/chi-tiet/{id}/review/create', 'App\Http\Controllers\ReviewController@create')->name('review-create');
