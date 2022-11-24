@@ -30,7 +30,7 @@ class PageController extends Controller
 
     public function getChitiet(Request $req){
         $sanpham = Recipe::with('user', 'group')->where('id',$req->id)->first();
-        $reviews = Review::with('recipe')->where('recipe_id', $req->id)->get();
+        $reviews = Review::with('recipe')->where('recipe_id', $req->id)->get()-> sortByDesc('created_at');
 
         return view('page.detail', compact('sanpham', 'reviews'));
     }

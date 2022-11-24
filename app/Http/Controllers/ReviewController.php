@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Group;
 use App\Models\Review;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -19,8 +20,8 @@ class ReviewController extends Controller
     public function index()
     {
         $reviews = DB::table('reviews')->get();
-        dd ($reviews);
-        // return $reviews;
+
+        return $reviews;
     }
 
     /**
@@ -32,7 +33,7 @@ class ReviewController extends Controller
     {
         $data = $req->all();
         
-        Review::create(['user_id' => 1, 'recipe_id' => $id, 'content' => $data['content']]);
+        Review::create(['user_id' => Auth::user()->id, 'recipe_id' => $id, 'content' => $data['content']]);
 
         return redirect()->route('chitietsanpham', $id);
     }
