@@ -127,20 +127,27 @@
                         <li><a href="#tab-description">レビューした(0)</a></li>
                     </ul>
                     <div class="panel" id="tab-description">
+                    <form action="{{route('review-create', $sanpham->id)}}">
+                        @csrf
+                        <textarea name="content"></textarea>
+                            <button style="padding: 5px 10px;
+                            border: 1px solid #f0a630;
+                            background-color: #f0a630;
+                            border-radius: 5px;
+                            margin: 15px 0;
+                            width: 100px;
+                            height: 40px;
+                            font-size: 16px;
+                            color: #ffffff;">レビュー</button>
+                    </form>
+                    @foreach($reviews as $review)
+                        <div class="panel" id="tab-description">
+                            <b>{{$review->user->name}}</b>
+                            {{$review->content}}
+                        </div>
+                    @endforeach
                         
-                        <div class="panel" id="tab-description">
-                            <b>user@gmail.com</b>
-                            content
-                        </div>
-                        <div class="panel" id="tab-description">
-                            <b>user@gmail.com</b>
-                            content
-                        </div>
-                        <div class="panel" id="tab-description">
-                            <b>user@gmail.com</b>
-                            content
-                        </div>
-                       
+                    </div>   
                     </div>      
                 </div>      
                 </div>  

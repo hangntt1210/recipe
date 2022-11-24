@@ -11,6 +11,11 @@ use App\Models\Recipe;
 class Review extends Model
 {
     //use HasFactory;
+    protected $fillable = [
+        'user_id',
+        'recipe_id',
+        'content',
+    ];
     public $timestamps = true;
     
     public function recipe()
